@@ -4,11 +4,14 @@
 (define (square x)
   (* x x))
 
+(define (get-previous-guess guess x)
+  (abs (- (+ guess x) x)))
+
 (define (improve guess x)
   (average guess (/ x guess)))
 
 (define (good-enough? guess x)
-  (< (abs (- (square guess) x)) 0.001))
+  (< (abs (- (get-previous-guess guess x) guess)) 0.001))
 
 (define (sqrt-iter guess x)
   (if (good-enough? guess x)
@@ -21,7 +24,7 @@
 
 ;For very small numbers, good_enough? will converge on 
 ;the sqrt of .001 or which looks like it is 0.03125 ~= .333
-(my-sqrt .0000000049)
+(my-sqrt 49)
 
 ; I think that very large numbers end in an endless loop because
 ; the program can't deal with such a large number.  Then when it improves the guess,
