@@ -1,9 +1,12 @@
-; This cbrt method uses the previous guess to ask if the current guess
-; is good_enough? and is written using block structure
+; This cbrt method uses the previous guess to determine good_enough?
+; and is written using block structure
+
+(define (square x)
+  (* x x))
 
 (define (cbrt x)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ; my-cbrt scoped definitions ;;;;;;;;;;;;;;;;;;
+  ; cbrt scoped definitions ;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   (define (cbrt-iter prev-guess guess)
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -12,7 +15,7 @@
     (define (good-enough?)
       (< (abs (- prev-guess guess)) 0.001))
     (define (improve-guess)
-      (average guess (/ x guess)))
+      (/ (+ (/ x (square guess)) (* 2 guess)) 3))
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ; cbrt-iter ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -24,10 +27,4 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   (cbrt-iter 0 1.0))
 
-(define (average x y)
-  (/ (+ x y) 2))
-
-(define (square x)
-  (* x x))
-
-(cbrt 9)
+(cbrt (* 9 9 9))
