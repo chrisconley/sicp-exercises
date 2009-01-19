@@ -1,3 +1,5 @@
+; Original square root method
+
 (define (average x y)
   (/ (+ x y) 2))
 
@@ -19,12 +21,5 @@
 (define (my-sqrt x)
   (sqrt-iter 1.0 x))
 
-;For very small numbers, good_enough? will converge on 
-;the sqrt of .001 or which looks like it is 0.03125 ~= .333
-(my-sqrt .0000000049)
-
-; I think that very large numbers end in an endless loop because
-; the program can't deal with such a large number.  Then when it improves the guess,
-; the average is still too big, so good-enough? can never converge
-;(my-sqrt 430000000000000000000000)
+(my-sqrt 49)
 

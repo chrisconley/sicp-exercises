@@ -1,3 +1,6 @@
+; This sqrt method uses the previous guess to ask if the current guess
+; is good_enough?
+
 (define (average x y)
   (/ (+ x y) 2))
 
