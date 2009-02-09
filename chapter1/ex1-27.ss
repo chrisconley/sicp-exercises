@@ -1,5 +1,3 @@
-;It will work well for small a and n, but not for large numbers.
- 
 (define (expmod base exp m)
   (cond ((= exp 0) 1)
         ((even? exp)
@@ -8,20 +6,19 @@
         (else
          (remainder (* base (expmod base (- exp 1) m))
                     m))))
- 
-(define (fermat-test n)
-  (define (try-it a)
-    (= (expmod a n n) a))
-  (try-it (+ 1 (random (- n 1 )))))
- 
+
+(define (fermat-test count n)
+  (= (expmod count n n) count))
+
 (define (fast-prime? n times)
   (cond ((= times 0) true)
         ((fermat-test n) (fast-prime? n (- times 1)))
         (else false)))
- 
+
 (define (square x)
   (* x x))
- 
-(expmod 2 3 3)
- 
-(fast-prime? 31 100)
+
+(define (car? count n)
+  (cond ((= count (- n 1)) true)
+        ((fermat-test count n) (car? (+ count 1) n))))
+
