@@ -19,15 +19,21 @@
 
 (integral cube 0 1 0.01)
 
-(define (const k n)
-  (cond ((or (= k 0) (= k no)) 1)
-        ((even? k) 2)
-        (else 4)))
+(define (mult a b n)
+  (cond ((= kh 0) 1)
+        ((even? (/ a h) 2)
+        (else 4))))
+
+(define (sum-with-mult term a next b n)
+  (if (> a b)
+      0
+      (* (mult) (+ (term a) 
+                    (sum term (next a) next b)))))
 
 (define (simpson-integral f a b n)
   (define (h) (/ (- b a) n))
-  (define (add-kh x) (+ x (* (h) (/ 1 n))))
+  (define (add-kh x) (+ x (h)))
   (* (sum f a add-kh b)
-     (h)))
+     (/ (h) 3)))
 
-(simpson-integral cube 0 1 100)
+(simpson-integral cube 0 1 100.0)
