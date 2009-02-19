@@ -6,9 +6,9 @@
 (define (cont-frac-r n d k)
   (display (d k))
   (newline)
-  (if (= k 1)
-      (/ (n k) (+ (d k) (/ (n (- k 1)) (d (- k 1)))))
-      (/ (n k) (+ (d k) (cont-frac-r n d (- k 1))))))
+  (if (= k 100)
+      (/ (n k) (+ (d k) (/ (n (+ k 1)) (d (+ k 1)))))
+      (/ (n k) (+ (d k) (cont-frac-r n d (+ k 1))))))
 
 
 
@@ -17,7 +17,7 @@
                (if (= (remainder (+ i 1) 3) 0)
                    (/ (* (+ i 1) 2) 3)
                    1))
-             100)
+             0)
 
 (define (cont-frac-i n d k)
   (define (iter current-value count)
