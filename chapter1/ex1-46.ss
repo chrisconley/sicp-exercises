@@ -1,23 +1,29 @@
-(define (iterative-improve good-enough improve)
-  (lambda (guess) (if (good-enough? guess x)
-                        guess
-                        (sqrt-iter (improve guess x) x))))
+(define (square x)
+  (* x x))
 
-(define (good-enough? guess x)
-  (< (abs (- (square guess) x)) 0.001))
+(define (average x y)
+  (/ (+ x y) 2))
 
-(define (improve guess x)
-  (average guess (/ x guess)))
+(define (iterative-improve close-enough? improve)
+  (define (try guess)
+    (let ((next (improve guess)))
+      (if (close-enough? guess next)
+          next
+          (try next))))
+  (lambda (guess) (try guess)))
 
-(define (sqrt x)
+(define (mysqrt x)
   ((iterative-improve 
-    (lambda (guess) (< (abs (- (square guess) x)) 0.001))
-    (lambda (guess) (average guess (/ x guess)))
-    1.0)))
+    (lambda (guess next) (< (abs (- (square guess) x)) 0.00001))
+    (lambda (guess) (average guess (/ x guess))))
+   1.0))
 
-(sqrt 25)
+(mysqrt 25)
 
 (define (fixed-point f first-guess)
-  ((iterative-improve good-enough? improve) first-guess))
+  ((iterative-improve 
+    (lambda (guess next) (< (abs (- guess next)) 0.00001))
+    (lambda (guess) (f guess)))
+   first-guess))
 
 (fixed-point cos 1.0)
