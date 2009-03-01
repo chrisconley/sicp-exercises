@@ -19,10 +19,10 @@
   (lambda (x)
     (avg (f (+ x dx)) (f x) (f (- x dx)))))
 
-((repeated square 2) 5)
-
 (define (n-fold-smoothed f n)
   (lambda (x)
     (repeated ((repeated smooth n) f) x)))
 
 ((repeated (n-fold-smoothed square 1) 2) 5)
+
+(n-fold-smoothed square 1)
