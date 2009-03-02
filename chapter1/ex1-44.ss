@@ -20,9 +20,6 @@
     (avg (f (+ x dx)) (f x) (f (- x dx)))))
 
 (define (n-fold-smoothed f n)
-  (lambda (x)
-    (repeated ((repeated smooth n) f) x)))
+  (repeated smooth n) f)
 
-((repeated (n-fold-smoothed square 1) 2) 5)
-
-(n-fold-smoothed square 1)
+((n-fold-smoothed square 5) 3)
