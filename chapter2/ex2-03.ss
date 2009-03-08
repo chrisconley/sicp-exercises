@@ -43,6 +43,9 @@
 (rect-area small-rect)
 (rect-perim small-rect)
 
+
+
+; not implemented
 (define (make-rectangle start-point x-length y-length)
   (cons (make-segment start-point (make-point (y-point start-point) (+ x-length (x-point start-point))))
         (make-segment start-point (make-point (x-point start-point) (+ y-length (y-point start-point))))))
