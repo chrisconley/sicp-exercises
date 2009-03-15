@@ -1,3 +1,12 @@
+; I think she's right because the more times you introduce an uncertain number,
+; the more uncertain your computations will grow.
+; Not sure though because even though you are only representing r1 and r2 once each,
+; you are repeatedly applying procedures to those uncertain numbers.
+; I would guess that this would have the same affect of growing the uncertainty. But
+; this isn't the case in par1 and par2, par2 works better.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (define (par1 r1 r2)
   (div-interval (mul-interval r1 r2)
                 (add-interval r1 r2)))
@@ -7,8 +16,6 @@
     (div-interval one
                   (add-interval (div-interval one r1)
                                 (div-interval one r2)))))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (define (make-center-percent c p)
   (make-interval (- c (* c p)) (+ c (* c p))))
