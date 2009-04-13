@@ -70,7 +70,7 @@
                  (enumerate-interval 1 board-size)))
           (queen-cols (- k 1))))))
   (queen-cols board-size))
-(queens 2)
+(queens 3)
 
-            ;
-  
+(define a (list 1 2 3))
+(map = a))

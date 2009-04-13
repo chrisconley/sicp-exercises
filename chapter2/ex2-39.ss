@@ -1,6 +1,5 @@
 ; same definition as accumulate
 (define (fold-right op initial sequence)
-  ;(display (cdr sequence))
   (if (null? sequence)
       initial
       (op (car sequence)
@@ -8,7 +7,6 @@
 
 (define (fold-left op initial sequence)
   (define (iter result rest)
-    ;(display (car rest))
     (if (null? rest)
         result
         (iter (op result (car rest))
@@ -16,9 +14,7 @@
   (iter initial sequence))
 
 (define (reverse-right sequence)
-  (fold-right (lambda (x y) 
-                ;(display y)
-                ;(newline)
+  (fold-right (lambda (x y)
                 (if (null? y)
                     x
                     (list y x))) 

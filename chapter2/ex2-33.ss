@@ -5,9 +5,8 @@
          (accumulate op initial (cdr sequence)))))
 
 (define (my-map p sequence)
-  (accumulate (lambda (x y) (p x y)) 0 sequence))
-
-(my-map + (list 1 2 3 4 5 6))
+  (accumulate (lambda (x y) (cons (p x) y)) null sequence))
+(my-map (lambda (x) (* x 10)) (list 1 2 3))
 
 (define (my-append seq1 seq2)
   (accumulate cons seq2 seq1 ))

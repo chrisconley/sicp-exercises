@@ -22,6 +22,6 @@
 (fold-right + 1 (list 1 2 3)) ; 7
 (fold-left + 1 (list 1 2 3)) ; 7
 
-; op should be commutative in order to auarantee that fold-left
+; op should be associative in order to guarantee that fold-left
 ; and fold-right will product the same values
 
